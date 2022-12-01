@@ -11,3 +11,80 @@ npm install mongodb mongoose graphql-yoga nodemon @babel/cli @babel/core @babel/
 5. config server
 
 * typeDefs tipos de definiciones mutation, querys etc en el schema
+
+
+--------
+crear//
+mutation createNote($title:String!,$content:String!,$date:String!,$author:String!){
+  createNote(input:{title:$title,content:$content,date:$date,author:$author}){
+    _id
+    title
+  }
+}
+
+query variables
+{
+  "title" : "nota 4",
+  "content" : "Yo se que no es facil el volver a comenzar",
+  "date":"30/11/2022",
+  "author":"Golden"
+}
+
+----------
+traer todo//
+query getNote{
+  getNotes{
+    _id
+    title
+    content
+    date
+    author
+  }
+}
+
+--------
+ver por _id
+query getNoteById($_id:ID){
+  getNoteById(_id:$_id){
+    title
+    date
+    content
+  }
+}
+
+
+query variables
+{
+  "_id": "638838442399820f74051409"
+}
+
+-------------
+update
+mutation updateNote($title:String!,$content:String!,$date:String!,$author:String!,$_id:ID){
+  updateNote(input:{title:$title,content:$content,date:$date,author:$author} _id:$_id){
+    _id
+    title
+    content
+  }
+}
+query variables
+{
+  "_id":"638838442399820f74051409",
+  "title" : "nota 5",
+  "content" : "como el arbol ya sin hojas, asi esta mi corazón",
+  "date":"29/11/2022",
+  "author":"Dred mar i"
+}
+-----------------
+borrar
+mutation removeNoteById($_id:ID){
+  removeNoteById(_id:$_id){
+    title
+    date
+    content
+  }
+}
+query variables
+{
+  "_id":"638838442399820f74051409"
+}
