@@ -1,0 +1,13 @@
+1. dependencias
+npm install mongodb mongoose graphql-yoga nodemon @babel/cli @babel/core @babel/node @babel/preset-env @babel/plugin-transform-runtime
+1.1 crear carpetas
+2. configurar .babel
+3. scripts "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist --source-maps",
+    "production": "node dist/index.js"
+  },
+4. crear carpeta de graphql / resolvers y poner los querys y mutation en un index
+5. config server
+
+* typeDefs tipos de definiciones mutation, querys etc en el schema
